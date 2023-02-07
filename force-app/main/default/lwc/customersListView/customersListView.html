@@ -1,0 +1,134 @@
+<template>
+    <!-- <div style="height: 300px;">
+        <lightning-datatable
+                key-field="id"
+                data={data}
+                columns={columns}
+                onrowaction={handleRowAction}>
+        </lightning-datatable>
+    </div> -->
+
+    <template if:true={showCustomerList}>
+        <lightning-card class="" icon-name="utility:table" title="Customers List View">
+            <!--Account List table starts-->
+            <template if:true={renderTable}>
+                <div class="tableDiv">
+                    <div class={tableStyle}>
+                        <table aria-describedby="customers-list" class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-table_resizable-cols">
+                            <!--Header of the table-->
+                            <thead>
+                                <tr class="slds-line-height_reset">
+                                    <th class="slds-text-align_right" scope="col" style="width:3.25rem">
+                                        <div class="slds-truncate slds-assistive-text" id="column-group-header" title="Choose a row to select">Choose a row to select</div>
+                                    </th>
+                                    <th class="slds-size_1-of-6" scope="col">
+                                        <div class="slds-truncate " title="Customer Name">Customer Name</div>
+                                    </th>
+                                    <th class="slds-size_1-of-6" scope="col">
+                                        <div class="slds-truncate " title="Type">Type</div>
+                                    </th>
+                                    <th class="slds-size_1-of-6" scope="col">
+                                        <div class="slds-truncate " title="Country">Country</div>
+                                        <!-- <div class="slds-resizable">
+                                            <input type="range" aria-label="Name column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-598" max="1000" min="20" tabindex="0" />
+                                            <span class="slds-resizable__handle">
+                                            <span class="slds-resizable__divider"></span>
+                                            </span>
+                                        </div> -->
+                                    </th>
+                                    <th class="slds-size_1-of-6" scope="col">
+                                        <div class="slds-truncate " title="Status">Status
+                                        </div>
+                                    </th>
+                                    <th class="slds-size_1-of-6" scope="col">
+                                        <div class="slds-truncate " title="Customer Rating">Customer Rating
+                                        </div>
+                                    </th>
+                                    <th class="slds-size_1-of-6" scope="col">
+                                        <div class="slds-truncate " title="Open Items">Open Items
+                                        </div>
+                                    </th>
+                                    <th class="slds-size_1-of-6" scope="col">
+                                        <div class="slds-truncate " title="Last Activity">Last Activity
+                                        </div>
+                                    </th>
+                                    <th class="slds-size_1-of-6" scope="col">
+                                        <div class="slds-truncate " title=""></div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <!--Body of the table-->
+                            <tbody>
+                                <template for:each={custLst} for:item="item" for:index="indexVar">
+                                    <tr key={item.Name} class="slds-hint-parent">
+                                        <td scope="col">
+                                            <lightning-input type="checkbox" data-id={item.Id} onchange={handleRadioBtnChange} label="" name="input1"></lightning-input>
+                                        </td>
+                                        <td class="slds-size_1-of-6" onclick={setCustomerId} data-recid={item.Id}>
+                                            <div>
+                                                <a>{item.Name}</a>
+                                            </div>
+                                        </td>
+                                        <td class="slds-size_1-of-6" onclick={setCustomerId} data-recid={item.Id}>
+                                            <div>
+                                                {item.CustomerStatusType}
+                                            </div>
+                                        </td>
+                                        <td class="slds-size_1-of-6" onclick={setCustomerId} data-recid={item.Id}>
+                                            <div>
+                                                <!-- {item.Rating} -->
+                                            </div>
+                                        </td>
+                                        <td class="slds-size_1-of-6" onclick={setCustomerId} data-recid={item.Id}>
+                                            <div onclick={setCustomerId} data-recid={item.Id}>
+                                                <!-- {item.NumberOfEmployees} -->
+                                            </div>
+                                        </td>
+                                        <td class="slds-size_1-of-6" onclick={setCustomerId} data-recid={item.Id}>
+                                            <div>
+                                                <!-- {item.AnnualRevenue} -->
+                                            </div>
+                                        </td>
+                                        <td class="slds-size_1-of-6" onclick={setCustomerId} data-recid={item.Id}>
+                                            <div onclick={setCustomerId} data-recid={item.Id}>
+                                                <!-- {item.NumberOfEmployees} -->
+                                            </div>
+                                        </td>
+                                        <td class="slds-size_1-of-6" onclick={setCustomerId} data-recid={item.Id}>
+                                            <div>
+                                                <!-- {item.AnnualRevenue} -->
+                                            </div>
+                                        </td>
+                                        <td class="slds-size_1-of-6">
+                                            <div class="buttonMenu">
+                                                <lightning-button-menu alternative-text="Toggle menu" menu-alignment="right">
+                                                    <P onclick={setCustomerId} data-recid={item.Id}>
+                                                        <lightning-menu-item label="View" icon-name="utility:preview">
+                                                        </lightning-menu-item>
+                                                    </P>
+                                                    <p onclick={openCIAction} data-recid={item.Id}>
+                                                        <lightning-menu-item label="Open CI" icon-name="utility:expand_alt">
+                                                        </lightning-menu-item>
+                                                    </p>
+                                                    <p onclick={backUpAction} data-recid={item.Id}>
+                                                        <lightning-menu-item label="Back Up" icon-name="action:upload">
+                                                        </lightning-menu-item>
+                                                    </p>
+                                                </lightning-button-menu>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </template>
+        </lightning-card>
+    </template>
+
+    <template if:true={showCustomerDetail}>
+        <c-customer-detail-view customerrecid={customerId} ></c-customer-detail-view>
+    </template>
+</template>

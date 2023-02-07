@@ -1,0 +1,193 @@
+<template>
+    <lightning-card class="" title="">
+        <!-- Deployment View Section -->
+        <div class="slds-grid slds-gutters" style="padding: 0% 2%;">
+            <!-- Left section -->
+            <div class="slds-col slds-size_12-of-12" style="display: flex;">
+                <div class="slds-col slds-size_3-of-12 slds-form-element">
+                    <label class="slds-form-element__label" for="text-input-id-47">Customer Name</label>
+                    <div class="slds-form-element__control" >
+                        <!-- Customer Name : {CustomerName} style="border: 2px; border-color: black; display: flex; justify-content: center; align-content:center; border-style: solid; background-color: #F6DD81;" -->
+                        <input type="text" id="text-input-id-47" readonly="" placeholder="" class="slds-input" value={CustomerName} />
+                    </div>
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    <label class="slds-form-element__label" for="text-input-id-47">Type</label>
+                    <div class="slds-form-element__control" >
+                        <input type="text" id="text-input-id-67" readonly="" placeholder="" class="slds-input" value={Type} />
+                    </div>
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    <label class="slds-form-element__label" for="text-input-id-47">Status</label>
+                    <div class="slds-form-element__control" >
+                        <input type="text" id="text-input-id-2" readonly="" placeholder="" class="slds-input" value="Test static Status value" />
+                    </div>
+                </div>
+                <div class="slds-col slds-size_3-of-12 slds-form-element">
+                    <label class="slds-form-element__label" for="text-input-id-47">Object Name</label>
+                    <div class="slds-form-element__control" >
+                        <!-- Customer Name : {CustomerName} style="border: 2px; border-color: black; display: flex; justify-content: center; align-content:center; border-style: solid; background-color: #F6DD81;" -->
+                        <input type="text" id="text-input-id-1" readonly="" placeholder="" class="slds-input" value="Test static Object Name" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br/>
+
+        <!-- Customer Details Section -->
+        <div class="slds-grid slds-gutters" style="padding: 0% 2%;">
+            <div class="slds-col slds-size_9-of-12">
+                <div class="slds-truncate slds-p-horizontal_small  slds-section__title slds-theme_shade" style="display: flex; justify-content: center; align-content:center;">
+                    Customer Details
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <!-- Customer Row Grid 1 -->
+        <div class="slds-grid slds-gutters" style="padding: 0% 2%;">
+            <div class="slds-col slds-size_3-of-12">
+                <div class="slds-truncate slds-p-horizontal_small  slds-section__title slds-theme_shade" style="display: flex; justify-content: center; align-content:center;">
+                    Configuration Area
+                </div>
+            </div>
+            <div class="slds-col slds-size_3-of-12">
+                <div class="slds-truncate slds-p-horizontal_small  slds-section__title slds-theme_shade" style="display: flex; justify-content: center; align-content:center;">
+                    Source
+                </div>
+            </div>
+            <div class="slds-col slds-size_3-of-12">
+                <div class="slds-truncate slds-p-horizontal_small  slds-section__title slds-theme_shade" style="display: flex; justify-content: center; align-content:center;">
+                    Target
+                </div>
+            </div>
+            <div class="slds-col slds-size_3-of-12">
+                <div class="slds-truncate slds-p-horizontal_small  slds-section__title slds-theme_shade" style="display: flex; justify-content: center; align-content:center;">
+                    Actions
+                </div>
+            </div>
+        </div>
+
+        <br/>
+
+        <!-- Left section -->
+        <template for:each={configAreaLst} for:item="item" >
+            <div key={item.Name} class="slds-grid slds-gutters" style="padding: 0% 2%;">
+                <div key={item.Name} class="slds-col slds-size_3-of-12">
+                    <div class="slds-truncate slds-p-horizontal_small  slds-section__title slds-theme_shade" style=" display: flex; justify-content: center; align-content:center;">
+                        {item.Name}
+                    </div>
+                </div>
+                <div key={item.Name} class="slds-col slds-size_3-of-12">
+                    <div style="justify-content: center; align-content:center;  display: flex; box-shadow: inset 0 -7px 9px -8px rgb(0 0 0 / 40%); height: 100%;">
+                        {item.Source}
+                    </div>
+                </div>
+                <div key={item.Name} class="slds-col slds-size_3-of-12" >
+                    <div style="justify-content: center; align-content:center;  display: flex; box-shadow: inset 0 -7px 9px -8px rgb(0 0 0 / 40%); height: 100%;">
+                        {item.Target}
+                    </div>
+                </div>
+                <div key={item.Name} class="slds-col slds-size_3-of-12" style="display: flex;">
+                    <div class="slds-col slds-size_1-of-2">
+                        <div style="display: flex; justify-content: center; align-content:center;">
+                            <lightning-button variant="brand" label="Compare" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <div style="display: flex; justify-content: center; align-content:center;">
+                            <lightning-button variant="brand" label="Deploy" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br key={item.Name}/>
+
+        </template>
+        <br/>
+
+        <!-- Customer Details Section -->
+        <div class="slds-grid slds-gutters" style="padding: 0% 2%;">
+            <div class="slds-col slds-size_9-of-12">
+                <div class="slds-truncate slds-p-horizontal_small  slds-section__title slds-theme_shade" style="display: flex; justify-content: center; align-content:center;">
+                    Data
+                </div>
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="slds-grid slds-gutters" style="padding: 0% 2%;">
+            <div class="slds-col slds-size_9-of-12">
+                <div class="slds-col slds-size_1-of-3" >
+                    <div class="slds-truncate slds-p-horizontal_small  slds-section__title slds-theme_shade" style="justify-content: center; align-content:center;">
+                        Complaince Configuration
+                    </div>
+                </div>
+            </div>
+            <div class="slds-col slds-size_3-of-12" style="display: flex;">
+                <div class="slds-col slds-size_1-of-2">
+                    <div style="display: flex; justify-content: center; align-content:center;">
+                        <lightning-button variant="brand" label="Compare" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <div style="display: flex; justify-content: center; align-content:center;">
+                        <lightning-button variant="brand" label="Deploy" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="slds-grid slds-gutters" style="padding: 0% 2%;" >
+            <div class="slds-col slds-size_9-of-12">
+                <div class="slds-col slds-size_1-of-3" >
+                    <div class="slds-truncate slds-p-horizontal_small  slds-section__title slds-theme_shade" style="justify-content: center; align-content:center;">
+                        Custom Settings
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br/>
+
+       <!-- Customer Details Section -->
+       <div class="slds-grid slds-gutters" style="padding: 0% 2%;">
+            <div class="slds-col slds-size_9-of-12">
+                <div class="slds-truncate slds-p-horizontal_small  slds-section__title slds-theme_shade" style="display: flex; justify-content: center; align-content:center;">
+                    Related Object and Tasks
+                </div>
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="slds-grid slds-gutters" style="padding: 0% 2%;" >
+            <div class="slds-col slds-size_9-of-12">
+                <div class="slds-col slds-size_1-of-3" >
+                    <div class="slds-truncate slds-p-horizontal_small  slds-section__title slds-theme_shade" style="justify-content: center; align-content:center;">
+                        Related Objects
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="slds-grid slds-gutters" style="padding: 0% 2%;" >
+            <div class="slds-col slds-size_9-of-12">
+                <div class="slds-col slds-size_1-of-3" >
+                    <div class="slds-truncate slds-p-horizontal_small  slds-section__title slds-theme_shade" style="justify-content: center; align-content:center;">
+                        Related Tasks
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br/>
+    </lightning-card>
+</template>
